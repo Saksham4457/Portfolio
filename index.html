@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saksham | Elite YouTube Thumbnail Designer</title>
+    <meta name="description"
+        content="Professional YouTube thumbnail designer helping creators increase CTR, views, and audience attention.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- COMBINED HERO & ABOUT SECTION -->
+        <section id="home" class="hero" style="padding-bottom: 60px;">
+            <div class="hero-bg">
+                <div class="gradient-mesh"></div>
+                <canvas id="particles-canvas"></canvas>
+            </div>
+            <div class="container hero-content">
+                <div class="hero-left reveal-left">
+                    <h4 style="font-family: var(--font-subheading); color: var(--accent-yellow); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1rem;">HI, I'M SAKSHAM SHARAWAT</h4>
+                    <h1 class="hero-title" style="font-size: clamp(3.5rem, 6vw, 6rem); margin-bottom: 1rem;">DESIGNING
+                        FOR <span class="highlight-gradient">CLICKS</span></h1>
+                    <p class="hero-subtitle">
+                        I blend visual psychology, storytelling, and data-driven design to create scroll-stopping
+                        thumbnails. My focus is simple: maximize your CTR and audience retention.
+                    </p>
+
+
+                </div>
+                <div class="hero-right reveal-right">
+                    <div class="floating-profile">
+                        <div id="parallax-stack" class="image-frame glass"
+                            style="width: 100%; max-width: 400px; aspect-ratio: 3/4; border-radius: 20px; overflow: hidden; position: relative; transition: transform 0.1s;">
+                            <img src="My photo.png" alt="Saksham - Elite YouTube Thumbnail Designer"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="glow-border" style="border-radius: 20px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="stats">
+            <div class="container stats-grid">
+                <div class="stat-card glass reveal-up">
+                    <h2 class="counter" data-target="80">0</h2><span class="stat-suffix">+</span>
+                    <p>Thumbnails Designed</p>
+                </div>
+                <div class="stat-card glass reveal-up" style="transition-delay: 0.1s">
+                    <h2 class="counter" data-target="10">0</h2><span class="stat-suffix">M+</span>
+                    <p>Impressions Generated</p>
+                </div>
+                <div class="stat-card glass reveal-up" style="transition-delay: 0.2s">
+                    <h2 class="counter" data-target="15">0</h2><span class="stat-suffix">%</span>
+                    <p>High CTR Focused</p>
+                </div>
+                <div class="stat-card glass reveal-up" style="transition-delay: 0.3s">
+                    <h2 class="counter" data-target="24">0</h2><span class="stat-suffix">h</span>
+                    <p>Fast Delivery</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED WORK SECTION -->
+        <section id="work" class="work section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">FEATURED <span class="highlight-text">WORK</span></h2>
+                    <p class="section-desc">A curated selection of high-performing thumbnails across various niches.</p>
+                </div>
+
+
+
+                <div class="gallery snake-gallery" id="snakeGallery">
+                    <!-- Dynamically populated via JS for easier category management or hardcoded -->
+                    <div class="gallery-item new reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="T1.jpg" alt="Thumbnail T1" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item new reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="T2.jpg" alt="Thumbnail T2" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item finance reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="Bkj9eA77WLU-HD.jpg" alt="Finance Thumbnail" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item documentary reveal-scale" style="transition-delay: 0.1s">
+                        <div class="gallery-inner glass">
+                            <img src="DPlpTfdLcT0-HD.jpg" alt="Documentary Thumbnail" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item education reveal-scale" style="transition-delay: 0.2s">
+                        <div class="gallery-inner glass">
+                            <img src="biSDXFDNMtI-HD.jpg" alt="Education Thumbnail" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item personal reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="cp8XDMrRCDw-HD.jpg" alt="Personal Brand" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item gaming reveal-scale" style="transition-delay: 0.1s">
+                        <div class="gallery-inner glass">
+                            <img src="uGbqF1zmfwk-HD.jpg" alt="Gaming Thumbnail" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item finance reveal-scale" style="transition-delay: 0.2s">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (10).jpg" alt="Finance" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item documentary reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (11).jpg" alt="Documentary" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item education reveal-scale" style="transition-delay: 0.1s">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (13).jpg" alt="Education" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item gaming reveal-scale" style="transition-delay: 0.2s">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (14).jpg" alt="Gaming" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item personal reveal-scale">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (15).jpg" alt="Personal Brand" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item finance reveal-scale" style="transition-delay: 0.1s">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (16).jpg" alt="Finance" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-item documentary reveal-scale" style="transition-delay: 0.2s">
+                        <div class="gallery-inner glass">
+                            <img src="youtube_thumbnail_maxres (9).jpg" alt="Documentary" loading="lazy">
+                            <div class="gallery-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">MY <span class="highlight-text">SERVICES</span></h2>
+                    <p class="section-desc">Elevating your channel with premium visual assets.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card glass reveal-up">
+                        <div class="light-sweep"></div>
+                        <div class="service-icon"><i class="fas fa-image"></i></div>
+                        <h3>YouTube Thumbnail Design</h3>
+                        <p>Custom, click-optimized thumbnails tailored to your niche, style, and target audience.</p>
+                    </div>
+
+                    <div class="service-card glass reveal-up" style="transition-delay: 0.2s">
+                        <div class="light-sweep"></div>
+                        <div class="service-icon"><i class="fas fa-chess-knight"></i></div>
+                        <h3>Viral Thumbnail Strategy</h3>
+                        <p>Consultation and concept generation based on competitive analysis and CTR psychology.</p>
+                    </div>
+                    <div class="service-card glass reveal-up" style="transition-delay: 0.3s">
+                        <div class="light-sweep"></div>
+                        <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>CTR Optimization Analysis</h3>
+                        <p>Deep-dive analysis of your current thumbnail performance and actionable strategies for
+                            improvement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY MY THUMBNAILS WORK -->
+        <section class="why-work section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">WHY MY DESIGNS <span class="highlight-text">CONVERT</span></h2>
+                    <p class="section-desc">The science behind a viral thumbnail.</p>
+                </div>
+
+                <div class="infographic-grid">
+                    <div class="info-card glass reveal-left">
+                        <div class="info-header">
+                            <h4>Emotion-Driven Visuals</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-red);"></div>
+                        </div>
+                    </div>
+                    <div class="info-card glass reveal-right">
+                        <div class="info-header">
+                            <h4>High Contrast Composition</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-yellow);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card glass reveal-left">
+                        <div class="info-header">
+                            <h4>Curiosity Gap</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-purple);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card glass reveal-right">
+                        <div class="info-header">
+                            <h4>Color Psychology</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-blue);"></div>
+                        </div>
+                    </div>
+                    <div class="info-card glass reveal-left">
+                        <div class="info-header">
+                            <h4>Face Expression Emphasis</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-red);"></div>
+                        </div>
+                    </div>
+                    <div class="info-card glass reveal-right">
+                        <div class="info-header">
+                            <h4>Mobile Readability</h4>
+                            <span class="progress-counter" data-target="100">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100%" style="background: var(--accent-yellow);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS TIMELINE -->
+        <section class="process section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">THE <span class="highlight-text">PROCESS</span></h2>
+                    <p class="section-desc">How we go from idea to viral sensation.</p>
+                </div>
+
+                <div class="timeline-container reveal-up">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-nodes">
+                        <div class="node">
+                            <div class="node-icon glass"><i class="fas fa-search"></i></div>
+                            <h4>1. Research</h4>
+                            <p>Analyzing competition and trends.</p>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon glass"><i class="fas fa-lightbulb"></i></div>
+                            <h4>2. Concept</h4>
+                            <p>Brainstorming 3-5 unique ideas.</p>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon glass"><i class="fas fa-pen-nib"></i></div>
+                            <h4>3. Design</h4>
+                            <p>Crafting the cinematic visual.</p>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon glass"><i class="fas fa-sliders-h"></i></div>
+                            <h4>4. Optimization</h4>
+                            <p>Color grading and contrast tuning.</p>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon glass"><i class="fas fa-check-circle"></i></div>
+                            <h4>5. Delivery</h4>
+                            <p>Final high-res files ready to upload.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CTA SECTION -->
+        <section id="contact" class="cta">
+            <div class="cta-bg"></div>
+            <div class="container cta-content reveal-up">
+                <h2 class="cta-title">READY TO MAKE YOUR VIDEOS <span class="highlight-gradient">IMPOSSIBLE TO
+                        IGNORE?</span></h2>
+                <p class="cta-desc">Let's collaborate to take your channel's thumbnails and click-through rates to the
+                    next level.</p>
+
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
