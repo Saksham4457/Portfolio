@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             hasCounted = true;
         }
-    }, { threshold: 0.5 });
+    }, { threshold: 0.15 });
 
     if (statsSection) {
         counterObserver.observe(statsSection);
@@ -112,8 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalItems = Array.from(snakeGallery.children);
         let items = [];
 
-        const itemWidth = 350;
-        const itemHeight = 197;
+        function getItemDimensions() {
+            const vw = window.innerWidth;
+            if (vw <= 480) return { w: 180, h: 101 };
+            if (vw <= 768) return { w: 220, h: 124 };
+            return { w: 350, h: 197 };
+        }
+
+        let dims = getItemDimensions();
+        let itemWidth = dims.w;
+        let itemHeight = dims.h;
         const targetGap = 20;
         const speed = 1.2; // Pixels per frame
 
@@ -122,13 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let gap = targetGap;
 
         function rebuildTrack() {
+            // Recalculate dimensions for current viewport
+            dims = getItemDimensions();
+            itemWidth = dims.w;
+            itemHeight = dims.h;
+
             containerWidth = snakeGallery.clientWidth;
             L = containerWidth + itemWidth;
             const totalTrackLength = 3 * L;
             const targetSpacing = itemWidth + targetGap;
 
-            // Calculate how many items we need to perfectly distribute across the track
-            const countNeeded = Math.max(Math.floor(totalTrackLength / targetSpacing), originalItems.length);
+            // Calculate how many items fit without overlapping — don't force originalItems.length
+            const countNeeded = Math.max(Math.ceil(totalTrackLength / targetSpacing), 3);
 
             // Re-render items
             snakeGallery.innerHTML = '';
@@ -137,12 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < countNeeded; i++) {
                 const origItem = originalItems[i % originalItems.length];
                 const clone = origItem.cloneNode(true);
+                clone.style.width = itemWidth + 'px';
+                clone.style.height = itemHeight + 'px';
                 snakeGallery.appendChild(clone);
                 items.push(clone);
             }
 
-            // Calculate exact gap to distribute them perfectly
-            gap = (totalTrackLength / items.length) - itemWidth;
+            // Calculate exact gap — ensure it's never negative
+            gap = Math.max((totalTrackLength / items.length) - itemWidth, 10);
 
             // Set positions
             items.forEach((item, index) => {

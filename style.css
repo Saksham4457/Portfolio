@@ -654,6 +654,19 @@ h6 {
     }
 }
 
+.twinkle-shadow {
+    animation: twinkleShadow 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkleShadow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+}
+
 .floating-profile {
     animation: profileFloat 4s ease-in-out infinite;
     width: 100%;
@@ -1121,27 +1134,52 @@ h6 {
 /* =========================================
    RESPONSIVE DESIGN
 ========================================= */
+
+/* ---------- Tablet (max-width: 1024px) ---------- */
 @media (max-width: 1024px) {
+    .section-padding {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 3rem;
+    }
+
+    .section-desc {
+        font-size: 1.05rem;
+    }
+
     .hero-content {
         flex-direction: column;
         text-align: center;
-        gap: 60px;
+        gap: 40px;
     }
 
     .hero-left {
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 100%;
     }
 
     .hero-right {
         justify-content: center;
+        height: auto;
+    }
+
+    .floating-profile {
+        max-width: 300px;
     }
 
     .about-split {
         flex-direction: column;
     }
 
+    .achievements {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Timeline goes vertical */
     .timeline-nodes {
         flex-direction: column;
         gap: 40px;
@@ -1167,14 +1205,42 @@ h6 {
         width: 100%;
     }
 
+    .node {
+        width: 200px;
+    }
+
     .bento-grid .gallery-item:nth-child(1),
     .bento-grid .gallery-item:nth-child(8) {
         grid-column: span 1;
         grid-row: span 1;
     }
+
+    .infographic-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* ---------- Mobile (max-width: 768px) ---------- */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 6%;
+    }
+
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    /* --- Navbar Mobile Menu --- */
     .nav-links {
         position: fixed;
         top: 0;
@@ -1187,16 +1253,22 @@ h6 {
         justify-content: center;
         align-items: center;
         transition: right 0.5s ease;
+        gap: 40px;
     }
 
     .nav-links.active {
         right: 0;
     }
 
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
     .hamburger {
         display: flex;
         position: absolute;
         right: 5%;
+        cursor: pointer;
     }
 
     .hamburger.active .line:nth-child(1) {
@@ -1211,13 +1283,164 @@ h6 {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    /* --- Hero Section --- */
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .hero-left h4 {
+        font-size: 0.85rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4rem) !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-right {
+        justify-content: center;
+        height: auto;
+    }
+
+    .floating-profile {
+        max-width: 260px;
+    }
+
+    /* --- Stats Section --- */
+    .stats {
+        padding: 30px 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 20px 15px;
+    }
+
+    .stat-card h2 {
+        font-size: 2.5rem;
+    }
+
+    .stat-suffix {
+        font-size: 2rem;
+    }
+
+    .stat-card p {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* --- Snake Gallery --- */
+    .snake-gallery .gallery-item {
+        width: 220px !important;
+        height: 124px !important;
+    }
+
+    /* --- Services --- */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-card {
+        padding: 30px 20px;
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    /* --- Infographic --- */
+    .infographic-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .info-card {
+        padding: 20px;
+    }
+
+    /* --- Timeline --- */
+    .timeline-container {
+        padding: 20px 0;
+    }
+
+    .node {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .node h4 {
+        font-size: 1.2rem;
+    }
+
+    .node-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    /* --- Thumbnail stack --- */
     .thumbnail-stack {
         width: 100%;
-        max-width: 400px;
+        max-width: 350px;
+        height: 200px;
+    }
+
+    /* --- CTA Section --- */
+    .cta {
+        padding: 80px 0;
+    }
+
+    .cta-title {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+
+    .cta-desc {
+        font-size: 1rem;
+        margin: 0 auto 25px;
+        padding: 0 5%;
     }
 
     .cta-btns {
         flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    /* --- Footer --- */
+    .footer {
+        padding: 40px 0 15px;
     }
 
     .footer-content {
@@ -1226,7 +1449,147 @@ h6 {
         text-align: center;
     }
 
+    /* --- Testimonials --- */
     .testimonial-card {
         min-width: 100%;
+        padding: 25px;
+    }
+
+    .review-text {
+        font-size: 1rem;
+    }
+
+    /* --- Custom cursor hidden on touch --- */
+    .cursor-glow {
+        display: none;
+    }
+}
+
+/* ---------- Small Mobile (max-width: 480px) ---------- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 5%;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-desc {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Hero adjustments */
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero-left h4 {
+        font-size: 0.75rem !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 12vw, 3rem) !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .floating-profile {
+        max-width: 220px;
+    }
+
+    /* Stats grid single column on very small screens */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px 10px;
+    }
+
+    .stat-card h2 {
+        font-size: 2rem;
+    }
+
+    .stat-suffix {
+        font-size: 1.5rem;
+    }
+
+    .stat-card p {
+        font-size: 0.7rem;
+    }
+
+    /* Snake gallery even smaller items */
+    .snake-gallery .gallery-item {
+        width: 180px !important;
+        height: 101px !important;
+    }
+
+    /* Services */
+    .service-card {
+        padding: 25px 18px;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .service-card p {
+        font-size: 0.85rem;
+    }
+
+    /* CTA */
+    .cta {
+        padding: 60px 0;
+    }
+
+    .cta-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .cta-desc {
+        font-size: 0.9rem;
+    }
+
+    /* Achievements */
+    .achievements {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Info cards */
+    .info-header h4 {
+        font-size: 0.9rem;
+    }
+
+    /* Node */
+    .node h4 {
+        font-size: 1.1rem;
+    }
+
+    .node p {
+        font-size: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+
+    .btn-large {
+        padding: 14px 36px;
+        font-size: 1rem;
     }
 }
