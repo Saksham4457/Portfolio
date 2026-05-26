@@ -111,61 +111,64 @@ document.addEventListener('DOMContentLoaded', () => {
     if (snakeGallery) {
         const originalItems = Array.from(snakeGallery.children);
         let items = [];
+        let rows = 3;
 
         function getItemDimensions() {
             const vw = window.innerWidth;
-            if (vw <= 480) return { w: 180, h: 101 };
-            if (vw <= 768) return { w: 220, h: 124 };
-            return { w: 350, h: 197 };
+            if (vw <= 480) return { w: 180, h: 101, gap: 5 };
+            if (vw <= 768) return { w: 220, h: 124, gap: 8 };
+            return { w: 350, h: 197, gap: 15 };
         }
 
         let dims = getItemDimensions();
         let itemWidth = dims.w;
         let itemHeight = dims.h;
-        const targetGap = 20;
+        let targetGap = dims.gap;
         const speed = 1.2; // Pixels per frame
 
         let containerWidth = snakeGallery.clientWidth;
         let L = containerWidth + itemWidth; // Length of one segment (row)
         let gap = targetGap;
+        let totalTrackLength = 0;
 
         function rebuildTrack() {
             // Recalculate dimensions for current viewport
             dims = getItemDimensions();
             itemWidth = dims.w;
             itemHeight = dims.h;
+            targetGap = dims.gap;
 
             containerWidth = snakeGallery.clientWidth;
             L = containerWidth + itemWidth;
-            const totalTrackLength = 3 * L;
-            const targetSpacing = itemWidth + targetGap;
-
-            // Calculate how many items fit without overlapping — don't force originalItems.length
-            const countNeeded = Math.max(Math.ceil(totalTrackLength / targetSpacing), 3);
+            
+            // Calculate how many rows we need to fit ALL items without overlapping
+            const minTotalLength = originalItems.length * (itemWidth + targetGap);
+            rows = Math.max(3, Math.ceil(minTotalLength / L));
+            
+            totalTrackLength = rows * L;
 
             // Re-render items
             snakeGallery.innerHTML = '';
             items = [];
 
-            for (let i = 0; i < countNeeded; i++) {
-                const origItem = originalItems[i % originalItems.length];
-                const clone = origItem.cloneNode(true);
+            for (let i = 0; i < originalItems.length; i++) {
+                const clone = originalItems[i].cloneNode(true);
                 clone.style.width = itemWidth + 'px';
                 clone.style.height = itemHeight + 'px';
                 snakeGallery.appendChild(clone);
                 items.push(clone);
             }
 
-            // Calculate exact gap — ensure it's never negative
-            gap = Math.max((totalTrackLength / items.length) - itemWidth, 10);
+            // Calculate exact gap to distribute them perfectly
+            gap = (totalTrackLength / originalItems.length) - itemWidth;
 
-            // Set positions
+            // Set positions and wrapper height
             items.forEach((item, index) => {
                 item.d = index * (itemWidth + gap);
                 item.style.transition = 'none';
             });
 
-            snakeGallery.style.height = (3 * itemHeight + 2 * gap) + 'px';
+            snakeGallery.style.height = (rows * itemHeight + (rows - 1) * gap) + 'px';
         }
 
         rebuildTrack();
@@ -184,11 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('touchend', () => { isPaused = false; });
 
         function animateSnake() {
-            if (!isPaused) {
-                // Ensure layout parameters are correct
+            if (!isPaused && totalTrackLength > 0) {
                 containerWidth = snakeGallery.clientWidth;
                 L = containerWidth + itemWidth;
-                const totalTrackLength = 3 * L;
 
                 items.forEach(item => {
                     item.d += speed;
@@ -202,17 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     let offset = item.d % L;
                     let x, y;
 
-                    if (row === 0) {
+                    // Even rows move right, odd rows move left
+                    if (row % 2 === 0) {
                         x = offset - itemWidth;
-                        y = 0;
-                    } else if (row === 1) {
-                        x = containerWidth - offset;
-                        y = itemHeight + gap;
                     } else {
-                        x = offset - itemWidth;
-                        y = (itemHeight + gap) * 2;
+                        x = containerWidth - offset;
                     }
-
+                    
+                    y = row * (itemHeight + gap);
                     item.style.transform = `translate(${x}px, ${y}px)`;
                 });
             }
